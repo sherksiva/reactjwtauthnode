@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import logo from './assets/iconheader.png';
 function App() {
   const [token, setToken] = useState('');
   const [protectedData, setProtectedData] = useState('');
@@ -36,9 +36,9 @@ function App() {
     if (response.ok) {
       const data = await response.json();
       setProtectedData(data.message);
-      alert(data.message);
+      //alert(data.message);
     } else {
-      alert('Unauthorized');
+      setProtectedData('Unauthorized');
     }
   };
 
@@ -58,7 +58,8 @@ function App() {
 
   return (
     <div>
-      <div style={{textAlign:'center',fontSize:'35px'}}>React JWT Authentication Example</div>
+      <div style={{textAlign:'center',fontSize:'35px'}}>JWT Authentication</div>
+      <div><img src={logo} alt="JWT Authentication" style={{marginLeft: '44%'}}/></div>
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
         <button onClick={handleLogin}>Login</button>
         <button onClick={handleProtectedData}>Access Protected Data</button>
